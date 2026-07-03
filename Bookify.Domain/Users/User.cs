@@ -1,4 +1,4 @@
-﻿using Bookify.Domain.Abstractions;
+using Bookify.Domain.Abstractions;
 using Bookify.Domain.Users.Events;
 
 namespace Bookify.Domain.Users;
@@ -20,7 +20,8 @@ public sealed class User : Entity
     {
         var user = new User(Guid.NewGuid(), firstName, lastName, email);
 
-        user.RaiseDomainEvent(new UserCreatedDominEvent(user.Id));
+        // الغلط: user.RaiseDomainEvent(new UserCreatedDominEvent(user.Id));
+        user.RaiseDomainEvent(new UserCreatedDomainEvent(user.Id)); // الصح
 
         return user;
     }

@@ -1,11 +1,12 @@
-﻿namespace Bookify.Domain.Shared;
+namespace Bookify.Domain.Shared;
 
 
 public record Currency
 {
     private Currency(string code) => Code = code;
 
-    public string Code { get; set; }
+    // الغلط: public string Code { get; set; }
+    public string Code { get; init; } // الصح
 
     public static readonly Currency Usd = new("USD");
     public static readonly Currency Eur = new("EUR");

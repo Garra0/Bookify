@@ -1,4 +1,4 @@
-﻿using Bookify.Domain.Apartments;
+using Bookify.Domain.Apartments;
 using Bookify.Domain.Shared;
 
 namespace Bookify.Domain.Bookings;
@@ -21,7 +21,8 @@ public class PricingService
                 amenity switch
                 {
                     Amenity.GardenView or Amenity.MountainView => 0.05m,
-                    Amenity.AirCoditioning => 0.01m,
+                    // الغلط: Amenity.AirCoditioning => 0.01m,
+                    Amenity.AirConditioning => 0.01m, // الصح
                     Amenity.Parking => 0.01m,
                     _ => 0.05m
                 };

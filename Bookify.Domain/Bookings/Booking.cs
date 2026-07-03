@@ -1,4 +1,4 @@
-﻿using Bookify.Domain.Abstractions;
+using Bookify.Domain.Abstractions;
 using Bookify.Domain.Apartments; 
 using Bookify.Domain.Bookings.Events;
 using Bookify.Domain.Shared;
@@ -7,32 +7,52 @@ namespace Bookify.Domain.Bookings;
 
 public sealed class Booking : Entity
 {
-    private Booking(Guid id, Guid apartmentId, Guid userId, DateRange duration, Money priceForPeriod, Money cleaingFee, Money amenitiesUpCharge, Money totalPrice, BookingStatus status, DateTime createdDate) : base(id)
+    // الغلط: private Booking(Guid id, Guid apartmentId, Guid userId, DateRange duration, Money priceForPeriod, Money cleaingFee, Money amenitiesUpCharge, Money totalPrice, BookingStatus status, DateTime createdDate) : base(id)
+    private Booking(Guid id, Guid apartmentId, Guid userId, DateRange duration, Money priceForPeriod, Money cleaningFee, Money amenitiesUpCharge, Money totalPrice, BookingStatus status, DateTime createdDate) : base(id) // الصح (تعديل الخطأ الإملائي)
     {
         ApartmentId = apartmentId;
         UserId = userId;
         Duration = duration;
         PriceForPeriod = priceForPeriod;
-        CleaingFee = cleaingFee;
+        // الغلط: CleaingFee = cleaingFee;
+        CleaningFee = cleaningFee; // الصح (تعديل الخطأ الإملائي)
         AmenitiesUpCharge = amenitiesUpCharge;
         TotalPrice = totalPrice;
         Status = status;
         CreatedDate = createdDate;
     }
 
-    public Guid ApartmentId { get; set; }
-    public Guid UserId { get; set; }
-    public DateRange Duration { get; set; }
-    public Money PriceForPeriod { get; set; }
-    public Money CleaingFee { get; set; }
-    public Money AmenitiesUpCharge { get; set; }
-    public Money TotalPrice { get; set; }
-    public BookingStatus Status { get; set; }
-    public DateTime CreatedDate { get; set; }
-    public DateTime? ConfirmedDate { get; set; }
-    public DateTime? RejectedDate { get; set; }
-    public DateTime? CompletedDate { get; set; }
-    public DateTime? CancelledDate { get; set; }
+    // الغلط: public Guid ApartmentId { get; set; }
+    public Guid ApartmentId { get; private set; } // الصح
+
+    // الغلط: public Guid UserId { get; set; }
+    public Guid UserId { get; private set; } // الصح
+
+    // الغلط: public DateRange Duration { get; set; }
+    public DateRange Duration { get; private set; } // الصح
+
+    // الغلط: public Money PriceForPeriod { get; set; }
+    public Money PriceForPeriod { get; private set; } // الصح
+
+    // الغلط: public Money CleaingFee { get; set; }
+    public Money CleaningFee { get; private set; } // الصح (تعديل الخطأ الإملائي)
+
+    // الغلط: public Money AmenitiesUpCharge { get; set; }
+    public Money AmenitiesUpCharge { get; private set; } // الصح
+
+    // الغلط: public Money TotalPrice { get; set; }
+    public Money TotalPrice { get; private set; } // الصح
+
+    // الغلط: public BookingStatus Status { get; set; }
+    public BookingStatus Status { get; private set; } // الصح
+
+    // الغلط: public DateTime CreatedDate { get; set; }
+    public DateTime CreatedDate { get; private set; } // الصح
+
+    public DateTime? ConfirmedDate { get; private set; } // تعديل الـ setter إلى private
+    public DateTime? RejectedDate { get; private set; } // تعديل الـ setter إلى private
+    public DateTime? CompletedDate { get; private set; } // تعديل الـ setter إلى private
+    public DateTime? CancelledDate { get; private set; } // تعديل الـ setter إلى private
 
     public static Booking Reserve(Apartment apartment, Guid userId, DateRange duration, DateTime createdDate, PricingService pricingService)
     {
@@ -44,8 +64,10 @@ public sealed class Booking : Entity
             userId,
             duration,
             pricingDetails.PriceForPeriod,
-            pricingDetails.CleaingFee,
-            pricingDetails.AmenitiesUpChare,
+            // الغلط: pricingDetails.CleaingFee,
+            pricingDetails.CleaningFee, // الصح (تعديل الخطأ الإملائي)
+            // الغلط: pricingDetails.AmenitiesUpChare,
+            pricingDetails.AmenitiesUpCharge, // الصح (تعديل الخطأ الإملائي)
             pricingDetails.TotalPrice,
             BookingStatus.Reserved,
             createdDate
@@ -90,7 +112,8 @@ public sealed class Booking : Entity
             return Result.Failure(BookingErrors.NotConfirmed);
 
         Status = BookingStatus.Completed;
-        ConfirmedDate = dateTime;
+        // الغلط: ConfirmedDate = dateTime;
+        CompletedDate = dateTime; // الصح
 
         RaiseDomainEvent(new BookingCompletedDomainEvent(Id));
 
@@ -109,7 +132,8 @@ public sealed class Booking : Entity
             return Result.Failure(BookingErrors.AlreadyStarted);
 
         Status = BookingStatus.Cancelled;
-        ConfirmedDate = dateTime;
+        // الغلط: ConfirmedDate = dateTime;
+        CancelledDate = dateTime; // الصح
 
         RaiseDomainEvent(new BookingCancelledDomainEvent(Id));
 
