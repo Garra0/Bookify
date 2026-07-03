@@ -5,8 +5,7 @@ public record Currency
 {
     private Currency(string code) => Code = code;
 
-    // الغلط: public string Code { get; set; }
-    public string Code { get; init; } // الصح
+    public string Code { get; init; }
 
     public static readonly Currency Usd = new("USD");
     public static readonly Currency Eur = new("EUR");

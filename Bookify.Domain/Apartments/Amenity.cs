@@ -3,11 +3,9 @@ namespace Bookify.Domain.Apartments;
 public enum Amenity
 {
     Wifi = 1,
-    // الغلط: AirCoditioning = 2,
-    AirConditioning = 2, // الصح
+    AirConditioning = 2, 
     Parking = 3,
-    // الغلط: PetFriedly = 4,
-    PetFriendly = 4, // الصح
+    PetFriendly = 4,
     SwimmingPool = 5,
     Gym = 6,
     Spa = 7,

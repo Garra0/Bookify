@@ -20,8 +20,7 @@ public sealed class User : Entity
     {
         var user = new User(Guid.NewGuid(), firstName, lastName, email);
 
-        // الغلط: user.RaiseDomainEvent(new UserCreatedDominEvent(user.Id));
-        user.RaiseDomainEvent(new UserCreatedDomainEvent(user.Id)); // الصح
+        user.RaiseDomainEvent(new UserCreatedDomainEvent(user.Id));
 
         return user;
     }
