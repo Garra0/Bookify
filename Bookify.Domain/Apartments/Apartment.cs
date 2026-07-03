@@ -1,4 +1,4 @@
-﻿using Bookify.Domain.Abstractions;
+using Bookify.Domain.Abstractions;
 using Bookify.Domain.Shared;
 
 namespace Bookify.Domain.Apartments;
@@ -15,12 +15,15 @@ public sealed class Apartment : Entity
         List<Amenity> amenities)
         : base(id)
     {
+        if (price.Currency != cleaningFee.Currency)
+            throw new InvalidOperationException("The price and cleaning fee currencies must be the same.");
+
         Name = name;
         Description = description;
         Address = address;
         Price = price;
         CleaningFee = cleaningFee;
-        Amenities = amenities;
+        _amenities = amenities;
     }
 
     public Name Name { get; private set; }
@@ -29,5 +32,11 @@ public sealed class Apartment : Entity
     public Money Price { get; private set; }
     public Money CleaningFee { get; private set; }
     public DateTime? LastBooked { get; internal set; }
-    public List<Amenity> Amenities { get; private set; } = [];
+
+    // حتى لو السيت برايفت بالنهايه اللست يمكن الاضافة عليها فخليها بالمره برايفت 
+    //public List<Amenity> Amenities { get; private set; } = [];
+
+    private readonly List<Amenity> _amenities = [];
+    // وضيف ريد اونلي بابلك كحل
+    public IReadOnlyList<Amenity> Amenities => _amenities.AsReadOnly();
 }
