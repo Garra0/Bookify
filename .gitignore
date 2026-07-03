@@ -1,0 +1,26 @@
+## Ignore Visual Studio Temporary Files and Build Results
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+x64/
+x86/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# Visual Studio cache directory
+.vs/
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userpreprocessor
+*.userosscache
+*.sln.docstates
+
+# OS files
+.DS_Store
+Thumbs.db
