@@ -13,8 +13,12 @@ public record Currency
 
     public static Currency FromCode(string code)
     {
-        return All.FirstOrDefault(x => x.Code == code) ??
-            throw new ApplicationException("The currency code is invalid");
+        return code.ToUpper() switch
+        {
+            "USD" => Usd,
+            "EUR" => Eur,
+            _ => throw new ApplicationException("The currency code is invalid")
+        };
     }
 
     public static readonly IReadOnlyCollection<Currency> All =
@@ -23,3 +27,6 @@ public record Currency
         Eur
     ];
 }
+
+
+

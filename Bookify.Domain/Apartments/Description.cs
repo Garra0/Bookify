@@ -1,3 +1,6 @@
-﻿namespace Bookify.Domain.Apartments;
+namespace Bookify.Domain.Apartments;
 
-public record Description(string Value);
+// التعديل: تم تغيير الكلاس إلى readonly record struct.
+// السبب: لتجنب تخصيص الذاكرة في الـ Heap وتقليل العبء على الـ Garbage Collector (GC)، 
+// لكونه كائن قيمة بسيط يحتوي على حقل واحد فقط.
+public readonly record struct Description(string Value);

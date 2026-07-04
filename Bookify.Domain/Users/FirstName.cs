@@ -1,3 +1,6 @@
-﻿namespace Bookify.Domain.Users;
+namespace Bookify.Domain.Users;
 
-public record FirstName(string Value);
+// التعديل: تم تغيير الكلاس إلى readonly record struct.
+// السبب: لتجنب تخصيص الذاكرة في الـ Heap وتقليل العبء على الـ Garbage Collector (GC)، 
+// لكونه كائن قيمة بسيط يحتوي على حقل واحد فقط.
+public readonly record struct FirstName(string Value);
