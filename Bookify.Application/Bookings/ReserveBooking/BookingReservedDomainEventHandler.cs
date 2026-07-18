@@ -1,4 +1,4 @@
-﻿using Bookify.Application.Abstractions.Email;
+using Bookify.Application.Abstractions.Email;
 using Bookify.Domain.Bookings;
 using Bookify.Domain.Bookings.Events;
 using Bookify.Domain.Users;
@@ -26,19 +26,22 @@ internal sealed class BookingReservedDomainEventHandler : INotificationHandler<B
     {
         var booking = await _bookingRepository.GetByIdAsync(notification.BookingId, cancellationToken);
 
-        if (booking == null)
+        if (booking is null)
+        {
             return;
+        }
 
         var user = await _userRepository.GetByIdAsync(booking.UserId, cancellationToken);
 
-        if (user == null)
+        if (user is null)
+        {
             return;
+        }
 
         // الفكرة اني بدي اعمل له حد ما يقدر يقعد اكثر من 10 دقايق ولازم يحجز خلالها... اه بنك شو رايك يعني -_-
         await _emailService.SendAsync(
             user.Email,
             "Booking reserved!",
-            "You have 10 mintues to confirm this booking"
-            );
+            "You have 10 minutes to confirm this booking");
     }
 }

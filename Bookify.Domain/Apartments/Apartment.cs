@@ -5,6 +5,7 @@ namespace Bookify.Domain.Apartments;
 
 public sealed class Apartment : Entity
 {
+    private Apartment() { }
     public Apartment(
         Guid id,
         Name name,
@@ -31,7 +32,7 @@ public sealed class Apartment : Entity
     public Address Address { get; private set; }
     public Money Price { get; private set; }
     public Money CleaningFee { get; private set; }
-    public DateTime? LastBooked { get; internal set; }
+    public DateTime? LastBookedOnUtc { get; internal set; }
 
     // حتى لو السيت برايفت بالنهايه اللست يمكن الاضافة عليها فخليها بالمره برايفت 
     //public List<Amenity> Amenities { get; private set; } = [];

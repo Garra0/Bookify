@@ -1,4 +1,4 @@
-﻿namespace Bookify.Application.Bookings.GetBooking;
+namespace Bookify.Application.Bookings.GetBooking;
 
 public sealed class BookingResponse
 {
@@ -16,5 +16,5 @@ public sealed class BookingResponse
     public string TotalPriceCurrency { get; init; }
     public DateOnly DurationStart { get; init; }
     public DateOnly DurationEnd { get; init; }
-    public DateOnly CreatedDate { get; init; }
+    public DateTime CreatedOnUtc { get; init; }
 }

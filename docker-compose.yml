@@ -1,0 +1,49 @@
+version: '3.4'
+
+services:
+  bookify.api:
+    image: ${DOCKER_REGISTRY-}bookifyapi
+    # انا ضفت السطر اللي تحت
+    container_name: Bookify.Api
+    build:
+      context: .
+      dockerfile: Bookify.Api/Dockerfile
+      # انا ضفت السطور اللي تحت
+    depends_on:
+      bookify-db:
+        condition: service_healthy
+
+  bookify-db:
+    image: postgres:16
+    container_name: Bookify.Db
+    environment:
+      - POSTGRES_DB=bookify
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - ./.containers/database:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+      # لما نعمل رن كان يصير كونفلكت لانه بيشتغل السيرفر متأخر فهون عملنا ديليه 
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+      # add identity for the user
+  bookify-idp:
+    image: quay.io/keycloak/keycloak:latest
+    container_name: Bookify.Identity
+    command: start-dev --import-realm
+    environment:
+    # هون بنحط اليوزر نيم والباس
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+    volumes:
+      - ./.containers/identity:/opt/keycloak/data
+      - ./.files/bookify-realm-export.json:/opt/keycloak/data/import/realm.json
+    # اول ما اعمل رن راح ينضاف عندي كونتينر جديد بضغط على البورت بيفتح لي صفحة اللوغن
+    ports:
+      - 18080:8080
