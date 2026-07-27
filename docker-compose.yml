@@ -46,4 +46,16 @@ services:
       - ./.files/bookify-realm-export.json:/opt/keycloak/data/import/realm.json
     # اول ما اعمل رن راح ينضاف عندي كونتينر جديد بضغط على البورت بيفتح لي صفحة اللوغن
     ports:
+    #  المنفذ الداخلي 8080 : المنفذ الخارجي 18080 
       - 18080:8080
+
+  # نفس الاسم المستخدم بالاب سيتينج مشان السيري لوغ
+  bookify-seq:
+    image: datalust/seq:latest
+    container_name: Bookify.Seq
+    environment:
+      - ACCEPT_EULA=Y
+      - SEQ_FIRSTRUN_NOAUTHENTICATION=true   # ما بدنا AUTHENTICATION
+    ports:
+      - 5341:5341
+      - 8081:80
