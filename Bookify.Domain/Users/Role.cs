@@ -1,9 +1,12 @@
-﻿namespace Bookify.Domain.Users;
+﻿using System.Text.Json.Serialization;
+
+namespace Bookify.Domain.Users;
 
 public sealed class Role
 {
     public static readonly Role Registered = new(1, "Registered");
 
+    [JsonConstructor]
     private Role(int id, string name)
     {
         Id = id;

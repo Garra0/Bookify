@@ -2,12 +2,15 @@ using Bookify.Domain.Abstractions;
 using Bookify.Domain.Apartments; 
 using Bookify.Domain.Bookings.Events;
 using Bookify.Domain.Shared;
+using System.Text.Json.Serialization;
 
 namespace Bookify.Domain.Bookings;
 
 public sealed class Booking : Entity
 {
     private Booking() { }
+
+    [JsonConstructor]
     private Booking(
         Guid id,
         Guid apartmentId,
