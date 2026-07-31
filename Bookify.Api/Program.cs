@@ -1,3 +1,4 @@
+//using Bookify.Api.Controllers.Bookings;
 using Bookify.Api.Extensions;
 using Bookify.Api.OpenApi;
 using Bookify.Application;
@@ -55,6 +56,18 @@ app.UseSerilogRequestLogging();
 app.UseCustomExceptionHandler();
 
 app.MapControllers();
+
+#region minimal APIs with versioning:
+
+//Asp.Versioning.Builder.ApiVersionSet apiVersionSet = app.NewApiVersionSet()
+//    .HasApiVersion(new Asp.Versioning.ApiVersion(1))
+//    .ReportApiVersions()
+//    .Build();
+
+//var routeGroupBuilder = app.MapGroup("api/v{version:apiVersion}").WithApiVersionSet(apiVersionSet);
+
+//routeGroupBuilder.MapBookingEndpoints();
+# endregion
 
 // Health check endpoint -> https://localhost:5000/health ->
 // its tell me if the DB is up "Healthy" or not "Unhealthy" and
