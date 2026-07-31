@@ -41,12 +41,22 @@ internal sealed class ProcessOutboxMessagesJob : IJob
 
     public async Task Execute(IJobExecutionContext context)
     {
-        _logger.LogInformation("Beginning to process outbox messages");
-
         using var connection = _sqlConnectionFactory.CreateConnection();
         using var transaction = connection.BeginTransaction();
 
+        // 1 DB Hit: جلب واستعلام الرسائل المحظورة بشرط واحد وبمرة واحدة فقط
         var outboxMessages = await GetOutboxMessagesAsync(connection, transaction);
+
+        if (!outboxMessages.Any())
+        {
+            // عند خلو الرسائل، يتم تسجيل اللوج بمستوى LogDebug لتجنب تلوث السجلات الرئبيسية، 
+            // وفي نفس الوقت يتيح تتبع عمل الجوب عند الحاجة بتفعيل Debug Level
+            _logger.LogDebug("No outbox messages found to process");
+            transaction.Commit();
+            return;
+        }
+
+        _logger.LogInformation("Beginning to process outbox messages ({Count} messages)", outboxMessages.Count);
 
         foreach (var outboxMessage in outboxMessages)
         {
