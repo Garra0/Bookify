@@ -45,7 +45,7 @@ internal sealed class AddReviewCommandHandler : ICommandHandler<AddReviewCommand
             booking,
             ratingResult.Value,
             new Comment(request.Comment),
-            _dateTimeProvider.UtcNow);
+            _dateTimeProvider.DateTimeNow);
 
         if (reviewResult.IsFailure)
         {

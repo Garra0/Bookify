@@ -66,7 +66,7 @@ internal sealed class ReserveBookingCommandHandler : ICommandHandler<ReserveBook
                 apartment,
                 user.Id,
                 duration,
-                _dateTimeProvider.UtcNow, // DateTime.Now --> استخدام الانترفيس افضل لتجنب الbugs
+                _dateTimeProvider.DateTimeNow, // DateTime.Now --> استخدام الانترفيس افضل لتجنب الbugs
                 _pricingService);
 
             _bookingRepository.Add(booking);
