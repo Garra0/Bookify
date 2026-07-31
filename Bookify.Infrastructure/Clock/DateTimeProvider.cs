@@ -1,8 +1,8 @@
-﻿using Bookify.Application.Abstractions.Clock;
+using Bookify.Application.Abstractions.Clock;
 
 namespace Bookify.Infrastructure.Clock;
 
 internal sealed class DateTimeProvider : IDateTimeProvider
 {
-    public DateTime DateTimeNow => DateTime.Now;
+    public DateTime DateTimeNow => DateTime.UtcNow;
 }
