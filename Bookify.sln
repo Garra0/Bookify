@@ -1,7 +1,6 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.10.34916.146
+# Visual Studio Version 18
+VisualStudioVersion = 18.8.12021.73 stable
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{52E3C4A0-2ED3-4771-BE8C-6F487CD41318}"
 EndProject
@@ -16,6 +15,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookify.Api", "Bookify.Api\Bookify.Api.csproj", "{C9C59116-D660-4CF8-B273-3172081C558C}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{54F84EA8-D4F8-4355-8F9F-8E347F580C50}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookify.Domain.UnitTests", "..\Bookify.Domain.UnitTests\Bookify.Domain.UnitTests.csproj", "{515F61E1-5882-423F-962E-597A1397E59E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +44,10 @@ Global
 		{54F84EA8-D4F8-4355-8F9F-8E347F580C50}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54F84EA8-D4F8-4355-8F9F-8E347F580C50}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54F84EA8-D4F8-4355-8F9F-8E347F580C50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{515F61E1-5882-423F-962E-597A1397E59E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{515F61E1-5882-423F-962E-597A1397E59E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{515F61E1-5882-423F-962E-597A1397E59E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{515F61E1-5882-423F-962E-597A1397E59E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,6 +57,7 @@ Global
 		{85D7201F-28D7-4846-82EB-B5E6D831180C} = {52E3C4A0-2ED3-4771-BE8C-6F487CD41318}
 		{0E50870C-CD5E-402A-91E2-B5B8CF5E15F4} = {52E3C4A0-2ED3-4771-BE8C-6F487CD41318}
 		{C9C59116-D660-4CF8-B273-3172081C558C} = {52E3C4A0-2ED3-4771-BE8C-6F487CD41318}
+		{515F61E1-5882-423F-962E-597A1397E59E} = {7FF63AAB-5DB3-4465-9468-FD832B45971D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {05EFE02B-C7CB-439F-BD44-BA69D852D810}
