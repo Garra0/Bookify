@@ -6,17 +6,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{52E3C4A0-2ED
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{7FF63AAB-5DB3-4465-9468-FD832B45971D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bookify.Domain", "Bookify.Domain\Bookify.Domain.csproj", "{B268FADF-389C-45FA-BFBB-1DA5DBF0EAA3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bookify.Domain", "src\Bookify.Domain\Bookify.Domain.csproj", "{B268FADF-389C-45FA-BFBB-1DA5DBF0EAA3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookify.Application", "Bookify.Application\Bookify.Application.csproj", "{85D7201F-28D7-4846-82EB-B5E6D831180C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookify.Application", "src\Bookify.Application\Bookify.Application.csproj", "{85D7201F-28D7-4846-82EB-B5E6D831180C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookify.Infrastructure", "Bookify.Infrastructure\Bookify.Infrastructure.csproj", "{0E50870C-CD5E-402A-91E2-B5B8CF5E15F4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookify.Infrastructure", "src\Bookify.Infrastructure\Bookify.Infrastructure.csproj", "{0E50870C-CD5E-402A-91E2-B5B8CF5E15F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookify.Api", "Bookify.Api\Bookify.Api.csproj", "{C9C59116-D660-4CF8-B273-3172081C558C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookify.Api", "src\Bookify.Api\Bookify.Api.csproj", "{C9C59116-D660-4CF8-B273-3172081C558C}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{54F84EA8-D4F8-4355-8F9F-8E347F580C50}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookify.Domain.UnitTests", "..\Bookify.Domain.UnitTests\Bookify.Domain.UnitTests.csproj", "{515F61E1-5882-423F-962E-597A1397E59E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookify.Domain.UnitTests", "tests\Bookify.Domain.UnitTests\Bookify.Domain.UnitTests.csproj", "{515F61E1-5882-423F-962E-597A1397E59E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

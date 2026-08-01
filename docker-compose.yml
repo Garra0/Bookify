@@ -7,7 +7,7 @@ services:
     container_name: Bookify.Api
     build:
       context: .
-      dockerfile: Bookify.Api/Dockerfile
+      dockerfile: src/Bookify.Api/Dockerfile
       # انا ضفت السطور اللي تحت
     depends_on:
       bookify-db:
